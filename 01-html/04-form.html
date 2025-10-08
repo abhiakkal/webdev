@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Exercise 04 - Form</title>
+  </head>
+  <body>
+    <main>
+      <h1>Form</h1>
+      <form action="/submit">
+        <p>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Full Name" />
+        </p>
+
+        <p>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="name@pdx.edu" />
+        </p>
+
+        <fieldset>
+          <legend>Favorite Character:</legend>
+          <p>
+            <input type="radio" id="spongebob" name="character" value="spongebob" />
+            <label for="spongebob">Spongebob</label>
+          </p>
+          <p>
+            <input type="radio" id="sandy" name="character" value="sandy" />
+            <label for="sandy">Sandy</label>
+          </p>
+          <p>
+            <input type="radio" id="patrick" name="character" value="patrick" />
+            <label for="patrick">Patrick</label>
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Are you a fan of the show?</legend>
+          <p>
+            <input type="checkbox" id="all-episodes" name="fan" value="all-episodes" />
+            <label for="all-episodes">Yes, I have watched all episodes!</label>
+          </p>
+          <p>
+            <input type="checkbox" id="best-memes" name="fan" value="best-memes" />
+            <label for="best-memes">Yes, it's got the best memes.</label>
+          </p>
+        </fieldset>
+
+        <p>
+          <input type="submit" value="Submit" />
+          <input type="reset" value="Reset" />
+        </p>
+      </form>
+    </main>
+  </body>
+</html>

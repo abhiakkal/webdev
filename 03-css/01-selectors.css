@@ -6,16 +6,42 @@
   --royalblue: #4169e1;
   --teal: #008080;
   --violet: #9400d3;
+  --green: #008000;
+  --red: #ff0000;
 }
 
-/* Use attribute selectors for the first part of the exercise */
 
-li[class] {
-  color: var(--red);
+li[class="dog"],
+li[class="hedgehog"] {
+  color: var(--magenta);
 }
 
-/* Use descendant, child, and sibling selectors for the second part */
+li[id="cat"],
+li[class="parrot"] {
+  color: var(--teal);
+}
 
-section li {
+li[class="donkey"] {
+  color: var(--royalblue);
+}
+
+li[class~="dog"][class~="cat"][class~="parrot"] {
+  color: var(--royalblue);
+}
+
+.list-food ol > li.first {
+  color: var(--teal);
+}
+
+.list-food ol > li.second,
+.list-food ol > li:nth-child(4) {
+  color: var(--magenta);
+}
+
+.list-food ol > li:nth-child(3) {
+  color: var(--royalblue);
+}
+
+.list-cleaning ol li {
   color: var(--green);
 }

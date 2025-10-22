@@ -1,6 +1,105 @@
+/* =======================
+   Base Styles (mobile-first)
+   ======================= */
+:root {
+  --black: #000;
+  --white: #fff;
+  --green: #0a7d0a;
+  --orange: #f0a500;
+  --purple: #7d009f;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--white);
+  background: var(--purple); /* small screen default */
+}
+
+/* Header and Navigation */
+header {
+  background: var(--black);
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin-bottom: 1rem;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+/* Main Section */
+.main {
+  padding: 1rem;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+/* =======================
+   Tablet Layout (≥768px)
+   ======================= */
+@media (min-width: 768px) {
+  body {
+    background: var(--orange);
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+  }
+
+  nav li {
+    margin: 0;
+  }
+
+  nav a {
+    font-size: 1.25rem;
+  }
+
+  .main {
+    padding: 2rem;
+  }
+}
+
+/* =======================
+   Desktop Layout (≥1024px)
+   ======================= */
 @media (min-width: 1024px) {
   body {
     background: var(--green);
-    color: var(--white);
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+  }
+
+  nav a {
+    font-size: 1.25rem;
+  }
+
+  .main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+  }
+
+  .main section {
+    width: 48%;
   }
 }

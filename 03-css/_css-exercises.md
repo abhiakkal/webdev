@@ -43,6 +43,15 @@ div ol li ul li ol li ul li a {
 }
 ```
 
+| Selector                                        | Specificity (A,B,C,D)
+| `nav .list-item > a`                            | (0, 0, 1, 2)      |
+| `#main::first-letter`                           | (0, 1, 0, 1)      |
+| `input[type]`                                   | (0, 0, 1, 1)      |
+| `section .main::first-line`                     | (0, 0, 1, 2)      |
+| `nav ul.menu li#first a:not([class='visited'])` | (0, 1, 2, 4)      |
+| `div ol li ul li ol li ul li a`                 | (0, 0, 0, 10)     |
+
+
 ## <a id="ex04"></a> Exercise 04 - Layout
 
 Update the layout in the starter files to match the screenshots below.

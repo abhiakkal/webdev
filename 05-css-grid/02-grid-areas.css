@@ -1,24 +1,87 @@
 .header {
   grid-area: header;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px;
+  border-radius: 12px;
 }
 
 .article {
   grid-area: article;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.aside {
+  grid-area: aside;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.section {
+  grid-area: section;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.footer {
+  grid-area: footer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px;
+  border-radius: 12px;
 }
 
 .grid-container {
   display: grid;
-  height: 97vh;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(8, 1fr);
-  gap: 10px;
+  height: 98vh;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  gap: 12px;
   grid-template-areas:
-    'header'
-    'article'
-    'article'
-    'section'
-    'section'
-    'section'
-    'aside'
-    'footer';
+    "header"
+    "article"
+    "article"
+    "section"
+    "section"
+    "section"
+    "aside"
+    "footer";
+}
+
+@media (min-width: 600px) and (max-width: 1000px) {
+  .grid-container {
+    grid-template-columns: 3fr 1.2fr;
+    grid-template-rows: 1fr 4fr 3fr 1fr;
+    gap: 12px;
+    grid-template-areas:
+      "header  header"
+      "article aside"
+      "section section"
+      "footer  footer";
+  }
+}
+
+@media (min-width: 1000px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 4fr 3fr 1fr;
+    gap: 12px;
+    grid-template-areas:
+      "header  header  header"
+      "aside   article article"
+      "section section section"
+      "footer  footer  footer";
+  }
 }

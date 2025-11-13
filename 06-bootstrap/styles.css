@@ -21,3 +21,7 @@ form > * {
 .box {
   height: 160px;
 }
+
+.card-title {
+  font-weight: bold;
+}

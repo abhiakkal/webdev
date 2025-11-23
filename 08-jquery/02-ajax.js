@@ -1,52 +1,45 @@
-const url = 'https://anapioficeandfire.com/api/books/';
 
-const app = document.querySelector('#books');
-app.style.paddingLeft = 0;
-const loading = document.querySelector('#loading');
+$(document).ready(function () {
+  const apiURL = "https://anapioficeandfire.com/api/books/";
+  const $container = $("#books");
+  const $spinner = $("#loading");
 
-const addBookToDOM = (item) => {
-  console.log(item);
-  let element = document.createElement('div');
-  let title = document.createElement('h4');
-  let author = document.createElement('p');
-  let published = document.createElement('p');
-  let pages = document.createElement('p');
+  // Create a single book card
+  function renderBook(book) {
+    const $card = $("<div>").addClass("book-item");
 
-  element.style.display = 'flex';
-  element.style.flexDirection = 'column';
-  element.style.alignItems = 'center';
-  element.style.marginTop = '20px';
+    const $title = $("<h4>").text(book.name);
+    const $author = $("<p>").text(`Author: ${book.authors[0]}`);
+    const $year = $("<p>").text(`Published: ${book.released.slice(0, 4)}`);
+    const $pages = $("<p>").text(`${book.numberOfPages} pages`);
 
-  title.textContent = item.name;
-  author.textContent = `by ${item.authors[0]}`;
-  published.textContent = item.released.substr(0, 4);
-  pages.textContent = `${item.numberOfPages} pages`;
-
-  element.append(title);
-  element.append(author);
-  element.append(published);
-  element.append(pages);
-
-  app.append(element);
-};
-
-const fetchData = (url) => {
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      data.forEach((item) => {
-        addBookToDOM(item);
-      });
-    })
-    .catch((error) => {
-      console.log(error);
-      let li = document.createElement('li');
-      li.textContent = `An error occured. Please try again.`;
-      app.append(li);
-    })
-    .finally(() => {
-      app.removeChild(loading);
+    // Basic layout styling
+    $card.css({
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      marginTop: "20px",
     });
-};
 
-fetchData(url);
+    $card.append($title, $author, $year, $pages);
+    $container.append($card);
+  }
+
+  // Load all books
+  $.ajax({
+    url: apiURL,
+    method: "GET",
+  })
+    .done(function (books) {
+      books.forEach((book) => renderBook(book));
+    })
+    .fail(function () {
+      const $error = $("<p>")
+        .text("Unable to load book information.")
+        .css("color", "red");
+      $container.append($error);
+    })
+    .always(function () {
+      $spinner.remove();
+    });
+});
